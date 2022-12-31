@@ -12,20 +12,20 @@ export class NavbarComponent {
       text: 'Home',
     },
     {
-      link: '/workouts',
-      text: 'Workouts',
+      link: '/workout-list',
+      text: 'Workout List',
     },
     {
-      link: '/exercises',
-      text: 'Exercises',
+      link: '/builder',
+      text: 'Builder',
     },
     {
       link: '/about',
       text: 'About',
     },
     {
-      link: '/contact',
-      text: 'Contact',
+      link: '/sign-up',
+      text: 'Sign In/Up',
     },
   ];
 

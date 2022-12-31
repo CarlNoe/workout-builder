@@ -10,3 +10,11 @@
   box-sizing: border-box;
   color: white;
 }
+
+::-moz-selection {
+  background: #00B2FF;
+}
+
+::selection {
+  background: #00B2FF;
+}
