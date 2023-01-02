@@ -16,7 +16,7 @@ export class NavbarComponent {
       text: 'Workout List',
     },
     {
-      link: '/builder',
+      link: '/workout-builder',
       text: 'Builder',
     },
     {
@@ -24,7 +24,7 @@ export class NavbarComponent {
       text: 'About',
     },
     {
-      link: '/sign-up',
+      link: '/register',
       text: 'Sign In/Up',
     },
   ];
