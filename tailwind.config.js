@@ -8,6 +8,7 @@ module.exports = {
       colors: {
         primary: "#121212",
         secondary: "#00B2FF",
+        tertiary: "#1E1E1E",
       },
       fontFamily: {
         main: ["Bebas Neue", "sans-serif"],

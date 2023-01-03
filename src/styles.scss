@@ -21,6 +21,28 @@
   background: #00B2FF;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #1E1E1E;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #00B2FF;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 178, 255, 0.8);
+}
+
+
 // Base styles
 
 @layer base {
