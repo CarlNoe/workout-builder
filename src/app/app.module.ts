@@ -12,9 +12,10 @@ import { WorkoutListComponent } from './pages/workout-list/workout-list.componen
 import { WorkoutBuilderComponent } from './pages/workout-builder/workout-builder.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { WorkoutItemComponent } from './components/workout-item/workout-item.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NavbarComponent, NavLinkComponent, MainBtnComponent, AboutComponent, WorkoutListComponent, WorkoutBuilderComponent, LoginComponent, RegisterComponent],
+  declarations: [AppComponent, HomeComponent, NavbarComponent, NavLinkComponent, MainBtnComponent, AboutComponent, WorkoutListComponent, WorkoutBuilderComponent, LoginComponent, RegisterComponent, WorkoutItemComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

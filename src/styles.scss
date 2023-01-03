@@ -5,6 +5,8 @@
 @tailwind components;
 @tailwind utilities;
 
+// Global styles
+
 * {
   font-family: 'Raleway', sans-serif;
   box-sizing: border-box;
@@ -17,4 +19,26 @@
 
 ::selection {
   background: #00B2FF;
+}
+
+// Base styles
+
+@layer base {
+  h1 {
+    @apply text-6xl;
+    @apply font-main;
+    @apply font-bold;
+  }
+
+  h2 {
+    @apply text-4xl;
+    @apply font-main;
+    @apply font-bold;
+  }
+
+  h3 {
+    @apply text-3xl;
+    @apply font-main;
+    @apply font-bold;
+  }
 }
