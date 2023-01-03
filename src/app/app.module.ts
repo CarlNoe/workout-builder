@@ -16,9 +16,10 @@ import { WorkoutItemComponent } from './components/workout-item/workout-item.com
 import { WorkoutBuilderItemComponent } from './components/workout-builder-item/workout-builder-item.component';
 import { WorkoutBuilderAddItemComponent } from './components/workout-builder-add-item/workout-builder-add-item.component';
 import { WorkoutBuilderPopupComponent } from './components/workout-builder-popup/workout-builder-popup.component';
+import { TextInputComponent } from './components/text-input/text-input.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NavbarComponent, NavLinkComponent, MainBtnComponent, AboutComponent, WorkoutListComponent, WorkoutBuilderComponent, LoginComponent, RegisterComponent, WorkoutItemComponent, WorkoutBuilderItemComponent, WorkoutBuilderAddItemComponent, WorkoutBuilderPopupComponent],
+  declarations: [AppComponent, HomeComponent, NavbarComponent, NavLinkComponent, MainBtnComponent, AboutComponent, WorkoutListComponent, WorkoutBuilderComponent, LoginComponent, RegisterComponent, WorkoutItemComponent, WorkoutBuilderItemComponent, WorkoutBuilderAddItemComponent, WorkoutBuilderPopupComponent, TextInputComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

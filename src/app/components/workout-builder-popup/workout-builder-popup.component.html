@@ -2,12 +2,18 @@
   class="fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-60 z-50 flex justify-center items-center"
   *ngIf="isOpen"
   (click)="onBackgroundClick($event)">
-  <div class="w-3/4 h-3/4 bg-primary relative p-8 overflow-auto" (click)="$event.stopPropagation()">
+  <div
+    class="w-3/4 h-3/4 bg-primary relative p-8"
+    (click)="$event.stopPropagation()">
     <button class="absolute top-4 right-4" (click)="toggle()">X</button>
     <h3>Choose your exercise</h3>
-    <div class="bg-tertiary w-full py-8 my-4">
-      <
-      <span>No exercise found</span>
+    <div class="flex">
+      <app-text-input placeholder="Search"></app-text-input>
+      <app-text-input placeholder="Series"></app-text-input>
+      <app-text-input placeholder="Reps"></app-text-input>
+    </div>
+    <div class="bg-tertiary w-full py-8 my-4 overflow-auto">
+      <span>Sorry we haven't found any exercise</span>
     </div>
   </div>
 </div>
