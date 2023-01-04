@@ -3,7 +3,7 @@
   *ngIf="isOpen"
   (click)="onBackgroundClick($event)">
   <div
-    class="w-3/4 h-3/4 bg-primary relative p-8"
+    class="w-3/4 h-[75vh] bg-primary p-8"
     (click)="$event.stopPropagation()">
     <button class="absolute top-4 right-4" (click)="toggle()">X</button>
     <h3>Choose your exercise</h3>
@@ -12,8 +12,12 @@
       <app-text-input placeholder="Series"></app-text-input>
       <app-text-input placeholder="Reps"></app-text-input>
     </div>
-    <div class="bg-tertiary w-full py-8 my-4 overflow-auto">
+    <div class="bg-tertiary w-full p-8 my-4 h-[60%] overflow-y-scroll">
       <span>Sorry we haven't found any exercise</span>
+      <div *ngFor="let exercise of exercises">
+        {{ exercise.name }}
+      </div>
     </div>
+    <app-main-btn text="Add Exercise"></app-main-btn>
   </div>
 </div>

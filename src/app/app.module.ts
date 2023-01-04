@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,8 +20,24 @@ import { WorkoutBuilderPopupComponent } from './components/workout-builder-popup
 import { TextInputComponent } from './components/text-input/text-input.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NavbarComponent, NavLinkComponent, MainBtnComponent, AboutComponent, WorkoutListComponent, WorkoutBuilderComponent, LoginComponent, RegisterComponent, WorkoutItemComponent, WorkoutBuilderItemComponent, WorkoutBuilderAddItemComponent, WorkoutBuilderPopupComponent, TextInputComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    NavbarComponent,
+    NavLinkComponent,
+    MainBtnComponent,
+    AboutComponent,
+    WorkoutListComponent,
+    WorkoutBuilderComponent,
+    LoginComponent,
+    RegisterComponent,
+    WorkoutItemComponent,
+    WorkoutBuilderItemComponent,
+    WorkoutBuilderAddItemComponent,
+    WorkoutBuilderPopupComponent,
+    TextInputComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
