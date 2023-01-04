@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Exercise } from 'src/app/models/exercise';
-import { WorkoutBuilderPopupComponent } from '../../components/workout-builder/workout-builder-popup/workout-builder-popup.component';
+import { Exercise } from 'src/app/shared/models/exercise';
 
 @Component({
   selector: 'app-workout-builder',

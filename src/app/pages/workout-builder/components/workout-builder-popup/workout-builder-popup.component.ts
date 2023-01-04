@@ -1,10 +1,12 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ExercisesApiService } from 'src/app/services/exercises-api.service';
-import { Exercise } from 'src/app/models/exercise';
+import { ExercisesApiService } from 'src/app/shared/services/exercises-api.service';
+import { Exercise } from 'src/app/shared/models/exercise';
+
 @Component({
   selector: 'app-workout-builder-popup',
   templateUrl: './workout-builder-popup.component.html',
 })
+
 export class WorkoutBuilderPopupComponent {
   @Output() exerciseSelected = new EventEmitter<Exercise>();
   @Output() closePopup = new EventEmitter<void>();
@@ -15,7 +17,7 @@ export class WorkoutBuilderPopupComponent {
       this.closePopup.emit();
     }
   }
-  
+
   ngOnInit(): void {
     this.exercisesApiService.getExercises().subscribe((data: any) => {
       this.exercises = data;
