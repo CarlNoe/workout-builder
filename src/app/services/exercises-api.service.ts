@@ -19,7 +19,14 @@ export class ExercisesApiService {
   constructor(private http: HttpClient) {}
 
   getExercises(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/?count=100`, options);
+    return this.http.get<any[]>(`${this.apiUrl}/?count=20`, options);
+  }
+
+  getExercisesByIds(startingId: number, count: number): Observable<any[]> {
+    return this.http.get<any[]>(
+      `${this.apiUrl}/?startingId=${startingId}&count=${count}`,
+      options
+    );
   }
 
   getExercise(id: string, options: object): Observable<any> {

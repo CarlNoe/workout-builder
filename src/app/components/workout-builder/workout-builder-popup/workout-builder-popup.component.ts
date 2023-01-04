@@ -1,29 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ExercisesApiService } from 'src/app/services/exercises-api.service';
+import { Exercise } from 'src/app/models/exercise';
 @Component({
   selector: 'app-workout-builder-popup',
   templateUrl: './workout-builder-popup.component.html',
 })
 export class WorkoutBuilderPopupComponent {
-  isOpen: boolean = false;
-  exercises:any = [];
-
-  toggle() {
-    this.isOpen = !this.isOpen;
-  }
+  @Output() exerciseSelected = new EventEmitter<Exercise>();
+  @Output() closePopup = new EventEmitter<void>();
+  exercises: Exercise[] = [];
 
   onBackgroundClick(event: MouseEvent) {
     if (event.target === event.currentTarget) {
-      this.toggle();
+      this.closePopup.emit();
     }
   }
-
+  
   ngOnInit(): void {
-    this.exercisesApiService
-      .getExercises().subscribe((data: any) => {
-        this.exercises = data;
-      }
-    );
+    this.exercisesApiService.getExercises().subscribe((data: any) => {
+      this.exercises = data;
+    });
   }
 
   constructor(private exercisesApiService: ExercisesApiService) {}

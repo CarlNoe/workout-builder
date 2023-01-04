@@ -1,23 +1,29 @@
 <div
   class="fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-60 z-50 flex justify-center items-center"
-  *ngIf="isOpen"
   (click)="onBackgroundClick($event)">
   <div
-    class="w-3/4 h-[75vh] bg-primary p-8"
+    class="w-3/4 h-[75vh] bg-primary p-8 flex flex-col"
     (click)="$event.stopPropagation()">
-    <button class="absolute top-4 right-4" (click)="toggle()">X</button>
     <h3>Choose your exercise</h3>
     <div class="flex">
       <app-text-input placeholder="Search"></app-text-input>
       <app-text-input placeholder="Series"></app-text-input>
       <app-text-input placeholder="Reps"></app-text-input>
     </div>
-    <div class="bg-tertiary w-full p-8 my-4 h-[60%] overflow-y-scroll">
-      <span>Sorry we haven't found any exercise</span>
-      <div *ngFor="let exercise of exercises">
-        {{ exercise.name }}
+
+    <div
+      class="bg-tertiary w-full p-8 my-4 h-[60%] overflow-y-scroll flex flex-wrap justify-center">
+      <span *ngIf="exercises.length == 0"
+        >Sorry we haven't found any exercise</span
+      >
+      <div
+        *ngFor="let exercise of exercises"
+        class="bg-primary w-48 m-4 p-4 flex flex-col justify-center items-center"
+        (click)="exerciseSelected.emit(exercise)">
+        <span class="text-center mb-2">{{ exercise.name }}</span>
+        <img class="w-24 h-24" [src]="exercise.image" [alt]="exercise.name" />
       </div>
     </div>
-    <app-main-btn text="Add Exercise"></app-main-btn>
+    <app-main-btn text="Add Exercise" class="self-center"></app-main-btn>
   </div>
 </div>
