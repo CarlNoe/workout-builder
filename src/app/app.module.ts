@@ -13,10 +13,10 @@ import { BrowseWorkoutsComponent } from './pages/browse-workouts/browse-workouts
 import { WorkoutBuilderComponent } from './pages/workout-builder/workout-builder.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { BrowseWorkoutsItemComponent } from './pages/browse-workouts/components/browse-workouts-item/browse-workouts-item.component'
-import { WorkoutBuilderExerciseComponent } from './pages/workout-builder/components/workout-builder-exercise/workout-builder-exercise.component';
-import { WorkoutBuilderAddExerciseComponent } from './pages/workout-builder/components/workout-builder-add-exercise/workout-builder-add-exercise.component';
-import { WorkoutBuilderPopupComponent } from './pages/workout-builder/components/workout-builder-popup/workout-builder-popup.component';
+import { WorkoutItemComponent } from './pages/browse-workouts/components/workout-item/workout-item.component'
+import { ExerciseComponent } from './pages/workout-builder/components/exercise/exercise.component';
+import { AddExerciseComponent } from './pages/workout-builder/components/add-exercise/add-exercise.component';
+import { PopupComponent } from './pages/workout-builder/components/popup/popup.component';
 import { TextInputComponent } from './shared/components/text-input/text-input.component';
 
 @NgModule({
@@ -31,10 +31,10 @@ import { TextInputComponent } from './shared/components/text-input/text-input.co
     WorkoutBuilderComponent,
     LoginComponent,
     RegisterComponent,
-    BrowseWorkoutsItemComponent,
-    WorkoutBuilderExerciseComponent,
-    WorkoutBuilderAddExerciseComponent,
-    WorkoutBuilderPopupComponent,
+    WorkoutItemComponent,
+    ExerciseComponent,
+    AddExerciseComponent,
+    PopupComponent,
     TextInputComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],

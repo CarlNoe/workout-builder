@@ -3,11 +3,11 @@ import { ExercisesApiService } from 'src/app/shared/services/exercises-api.servi
 import { Exercise } from 'src/app/shared/models/exercise';
 
 @Component({
-  selector: 'app-workout-builder-popup',
-  templateUrl: './workout-builder-popup.component.html',
+  selector: 'app-popup',
+  templateUrl: './popup.component.html',
 })
 
-export class WorkoutBuilderPopupComponent {
+export class PopupComponent {
   @Output() exerciseSelected = new EventEmitter<Exercise>();
   @Output() closePopup = new EventEmitter<void>();
   exercises: Exercise[] = [];

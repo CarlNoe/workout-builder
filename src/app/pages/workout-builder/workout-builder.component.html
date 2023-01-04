@@ -9,14 +9,14 @@
   </div>
   <h3 class="my-12">Session 1</h3>
   <div class="flex flex-col border-l-2 border-secondary pl-4">
-    <app-workout-builder-exercise></app-workout-builder-exercise>
-    <app-workout-builder-add-exercise
+    <app-exercise></app-exercise>
+    <app-add-exercise
       (togglePopup)="togglePopup()"
-    ></app-workout-builder-add-exercise>
+    ></app-add-exercise>
   </div>
 </main>
-<app-workout-builder-popup
+<app-popup
   *ngIf="showPopup"
   (closePopup)="togglePopup()"
   (exerciseSelected)="onExerciseSelected($event)"
-></app-workout-builder-popup>
+></app-popup>
