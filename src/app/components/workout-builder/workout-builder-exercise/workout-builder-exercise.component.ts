@@ -3,9 +3,9 @@ import { WorkoutBuilderPopupComponent } from '../workout-builder-popup/workout-b
 
 
 @Component({
-  selector: 'app-workout-builder-item',
-  templateUrl: './workout-builder-item.component.html',
+  selector: 'app-workout-builder-exercise',
+  templateUrl: './workout-builder-exercise.component.html',
 })
-export class WorkoutBuilderItemComponent {
+export class WorkoutBuilderExerciseComponent {
 
 }

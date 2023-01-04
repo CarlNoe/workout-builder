@@ -9,13 +9,13 @@ import { NavbarComponent } from './components/global/navbar/navbar.component';
 import { NavLinkComponent } from './components/global/nav-link/nav-link.component';
 import { MainBtnComponent } from './components/global/main-btn/main-btn.component';
 import { AboutComponent } from './pages/about/about.component';
-import { WorkoutListComponent } from './pages/workout-list/workout-list.component';
+import { BrowseWorkoutsComponent } from './pages/browse-workouts/browse-workouts.component';
 import { WorkoutBuilderComponent } from './pages/workout-builder/workout-builder.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { WorkoutItemComponent } from './components/workout-item/workout-item.component';
-import { WorkoutBuilderItemComponent } from './components/workout-builder/workout-builder-item/workout-builder-item.component';
-import { WorkoutBuilderAddItemComponent } from './components/workout-builder/workout-builder-add-item/workout-builder-add-item.component';
+import { BrowseWorkoutsItemComponent } from './components/browse-workouts-item/browse-workouts-item.component';
+import { WorkoutBuilderExerciseComponent } from './components/workout-builder/workout-builder-exercise/workout-builder-exercise.component';
+import { WorkoutBuilderAddExerciseComponent } from './components/workout-builder/workout-builder-add-exercise/workout-builder-add-exercise.component';
 import { WorkoutBuilderPopupComponent } from './components/workout-builder/workout-builder-popup/workout-builder-popup.component';
 import { TextInputComponent } from './components/global/text-input/text-input.component';
 
@@ -27,13 +27,13 @@ import { TextInputComponent } from './components/global/text-input/text-input.co
     NavLinkComponent,
     MainBtnComponent,
     AboutComponent,
-    WorkoutListComponent,
+    BrowseWorkoutsComponent,
     WorkoutBuilderComponent,
     LoginComponent,
     RegisterComponent,
-    WorkoutItemComponent,
-    WorkoutBuilderItemComponent,
-    WorkoutBuilderAddItemComponent,
+    BrowseWorkoutsItemComponent,
+    WorkoutBuilderExerciseComponent,
+    WorkoutBuilderAddExerciseComponent,
     WorkoutBuilderPopupComponent,
     TextInputComponent,
   ],

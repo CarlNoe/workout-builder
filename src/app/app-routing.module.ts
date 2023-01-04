@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './pages/home/home.component';
-import { WorkoutListComponent } from './pages/workout-list/workout-list.component';
+import { BrowseWorkoutsComponent } from './pages/browse-workouts/browse-workouts.component';
 import { WorkoutBuilderComponent } from './pages/workout-builder/workout-builder.component';
 import { AboutComponent } from './pages/about/about.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -10,7 +10,7 @@ import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'workout-list', component: WorkoutListComponent },
+  { path: 'workout-list', component: BrowseWorkoutsComponent },
   { path: 'workout-builder', component: WorkoutBuilderComponent },
   { path: 'about', component: AboutComponent },
   { path: 'register', component: RegisterComponent },
