@@ -1,30 +1,54 @@
 <div
   class="fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-60 z-50 flex justify-center items-center"
-  (click)="onBackgroundClick($event)">
+  (click)="onBackgroundClick($event)"
+>
   <div
     class="w-3/4 h-[75vh] bg-primary p-8 flex flex-col"
-    (click)="$event.stopPropagation()">
+    (click)="$event.stopPropagation()"
+  >
     <h3>Choose your exercise</h3>
-    <div class="flex">
-      <app-text-input placeholder="Search"></app-text-input>
-      <app-text-input placeholder="Series"></app-text-input>
-      <app-text-input placeholder="Reps"></app-text-input>
+    <div class="flex justify-between">
+      <input class="text-input" placeholder="Search" />
+      <div class="flex">
+        <input
+          (change)="onSetAmountChange($event)"
+          class="text-input mx-2"
+          placeholder="Sets *"
+          type="number"
+          min="1"
+        />
+        <input
+          (change)="onRepAmountChange($event)"
+          class="text-input mx-2"
+          placeholder="Reps *"
+          type="number"
+          min="1"
+        />
+      </div>
     </div>
 
     <div
-      class="bg-tertiary w-full p-8 my-4 h-[60%] overflow-y-scroll flex flex-wrap justify-center">
+      class="bg-tertiary w-full p-8 my-4 h-[60%] overflow-y-scroll flex flex-wrap justify-center"
+    >
       <span *ngIf="exercises.length == 0"
         >Sorry we haven't found any exercise</span
       >
       <div
         *ngFor="let exercise of exercises"
-        class="bg-primary w-48 m-4 p-4 flex flex-col justify-center items-center"
-        (click)="exerciseSelected.emit(exercise)">
+        class="bg-primary w-48 m-4 p-4 flex flex-col justify-center items-center cursor-pointer hover:opacity-75 {{
+          selectedExercise.id == exercise.id ? 'bg-secondary' : ''
+        }}"
+        (click)="onExerciseSelect(exercise)"
+      >
         <span class="text-center mb-2">{{ exercise.name }}</span>
         <img class="w-24 h-24" [src]="exercise.image" [alt]="exercise.name" />
       </div>
     </div>
-    <button class="main-btn hover:bg-primary hover:text-secondary w-1/2 my-4 self-center">
+    <button
+      [disabled]="selectedExercise.id == '' || setAmount <= 0 || repAmount <= 0"
+      (click)="onAddExerciseClick()"
+      class="main-btn w-1/2 my-4 self-center enabled:hover:bg-primary enabled:hover:text-secondary disabled:bg-blue-300 disabled:border-none disabled:text-gray-300"
+    >
       ADD EXERCISE
     </button>
   </div>

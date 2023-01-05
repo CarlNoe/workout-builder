@@ -77,4 +77,11 @@
     @apply border-2;
     @apply transition-all;
   }
+
+  .text-input {
+    @apply bg-tertiary;
+    @apply border-none;
+    @apply px-6;
+    @apply py-2;
+  }
 }
