@@ -4,6 +4,4 @@ import { Component } from '@angular/core';
   selector: 'app-register',
   templateUrl: './register.component.html',
 })
-export class RegisterComponent {
-
-}
+export class RegisterComponent {}

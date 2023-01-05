@@ -24,9 +24,7 @@ export class PopupComponent {
   setAmount: number = 0;
 
   addExerciseToLocalStorage() {
-    let exercises = JSON.parse(
-      localStorage.getItem('exercises') || '[]'
-    );
+    let exercises = JSON.parse(localStorage.getItem('exercises') || '[]');
 
     exercises.push({
       ...this.selectedExercise,

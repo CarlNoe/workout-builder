@@ -4,6 +4,4 @@ import { Component } from '@angular/core';
   selector: 'app-workout-item',
   templateUrl: './workout-item.component.html',
 })
-export class WorkoutItemComponent {
-
-}
+export class WorkoutItemComponent {}

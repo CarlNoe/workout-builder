@@ -17,9 +17,7 @@ export class WorkoutBuilderComponent {
   }
 
   getExercisesFromLocalStorage() {
-    let exercises = JSON.parse(
-      localStorage.getItem('exercises') || '[]'
-    );
+    let exercises = JSON.parse(localStorage.getItem('exercises') || '[]');
 
     this.workoutExerciseList = exercises;
   }

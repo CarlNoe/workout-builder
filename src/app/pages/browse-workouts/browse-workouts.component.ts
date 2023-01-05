@@ -4,6 +4,4 @@ import { Component } from '@angular/core';
   selector: 'app-browse-workouts',
   templateUrl: './browse-workouts.component.html',
 })
-export class BrowseWorkoutsComponent {
-
-}
+export class BrowseWorkoutsComponent {}

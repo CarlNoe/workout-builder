@@ -12,7 +12,7 @@ import { BrowseWorkoutsComponent } from './pages/browse-workouts/browse-workouts
 import { WorkoutBuilderComponent } from './pages/workout-builder/workout-builder.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { WorkoutItemComponent } from './pages/browse-workouts/components/workout-item/workout-item.component'
+import { WorkoutItemComponent } from './pages/browse-workouts/components/workout-item/workout-item.component';
 import { ExerciseComponent } from './pages/workout-builder/components/exercise/exercise.component';
 import { AddExerciseComponent } from './pages/workout-builder/components/add-exercise/add-exercise.component';
 import { PopupComponent } from './pages/workout-builder/components/popup/popup.component';
