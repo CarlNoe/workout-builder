@@ -1,11 +1,19 @@
-<div class="flex justify-between items-center h-28 w-full mb-4 bg-tertiary text-2xl">
+<div
+  class="flex justify-between items-center h-28 w-full mb-4 bg-tertiary text-2xl"
+>
   <div
-    class="h-full w-28 bg-[url('./assets/img/workout-item.png')] bg-center"></div>
+    class="h-full w-28 bg-center bg-no-repeat bg-contain"
+    [style.background-image]="'url(' + workoutExercise.image + ')'"
+  ></div>
   <div class="flex justify-between w-2/3">
-    <span class="font-bold text-2xl">CURL</span>
-    <span class="font-bold text-2xl">3x10</span>
+    <span class="font-bold text-2xl">{{ workoutExercise.name }}</span>
+    <span class="font-bold text-2xl"
+      >{{ workoutExercise.setAmount }}x{{ workoutExercise.repAmount }}</span
+    >
   </div>
-  <button class="w-28 h-full flex items-center justify-center bg-red-500 hover:opacity-75 transition-all">
+  <button
+    class="w-28 h-full flex items-center justify-center bg-red-500 hover:opacity-75 transition-all"
+  >
     <img src="./assets/img/trash.svg" alt="trash" />
   </button>
 </div>
