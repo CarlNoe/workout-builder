@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { NavLinkComponent } from './shared/components/nav-link/nav-link.component';
-import { MainBtnComponent } from './shared/components/main-btn/main-btn.component';
 import { AboutComponent } from './pages/about/about.component';
 import { BrowseWorkoutsComponent } from './pages/browse-workouts/browse-workouts.component';
 import { WorkoutBuilderComponent } from './pages/workout-builder/workout-builder.component';
@@ -25,7 +24,6 @@ import { TextInputComponent } from './shared/components/text-input/text-input.co
     HomeComponent,
     NavbarComponent,
     NavLinkComponent,
-    MainBtnComponent,
     AboutComponent,
     BrowseWorkoutsComponent,
     WorkoutBuilderComponent,

@@ -64,3 +64,17 @@
     @apply font-bold;
   }
 }
+
+@layer components {
+  .main-btn {
+    @apply bg-secondary;
+    @apply font-main;
+    @apply py-2;
+    @apply px-4;
+    @apply my-2;
+    @apply text-lg;
+    @apply border-secondary;
+    @apply border-2;
+    @apply transition-all;
+  }
+}
