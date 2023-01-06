@@ -1,4 +1,4 @@
-export interface WorkoutExercise {
+export interface LsExercise {
   id: string;
   name: string;
   bodyPart?: string;

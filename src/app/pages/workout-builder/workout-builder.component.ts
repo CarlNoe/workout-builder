@@ -8,6 +8,7 @@ import { LsWorkoutRoutineService } from 'src/app/shared/services/ls-workout-rout
 export class WorkoutBuilderComponent {
   @Input() selectedExercise: Exercise | undefined;
 
+  currentPopupSession: number = 0;
   showPopup: boolean = false;
 
   workoutRoutineName: string = '';

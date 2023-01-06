@@ -1,4 +1,4 @@
-import { WorkoutExercise } from 'src/app/shared/models/workout-exercise';
+import { LsExercise } from './../../../../shared/models/ls-exercise';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { LsWorkoutRoutineService } from 'src/app/shared/services/ls-workout-routine.service';
 
@@ -7,7 +7,7 @@ import { LsWorkoutRoutineService } from 'src/app/shared/services/ls-workout-rout
   templateUrl: './exercise.component.html',
 })
 export class ExerciseComponent {
-  @Input() workoutExercise: WorkoutExercise = {
+  @Input() workoutExercise: LsExercise = {
     id: '',
     name: '',
     bodyPart: '',

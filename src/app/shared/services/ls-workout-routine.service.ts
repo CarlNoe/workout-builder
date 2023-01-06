@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { WorkoutExercise } from '../models/workout-exercise';
+import { LsExercise } from '../models/ls-exercise';
 @Injectable({
   providedIn: 'root',
 })
@@ -39,7 +39,7 @@ export class LsWorkoutRoutineService {
     let workoutRoutine = this.getLsWorkoutRoutine();
     workoutRoutine.workoutSessions.push({
       session: workoutRoutine.workoutSessions.length + 1,
-      workoutExercises: [],
+      exercise: [],
     });
     localStorage.setItem('workoutRoutine', JSON.stringify(workoutRoutine));
   }
@@ -49,7 +49,7 @@ export class LsWorkoutRoutineService {
     this.initLsWorkoutRoutine();
   }
 
-  deleteLsExercise(exercise: WorkoutExercise, session: number) {
+  deleteLsExercise(exercise: LsExercise, session: number) {
     let workoutRoutine = this.getLsWorkoutRoutine();
     let workoutSessions = workoutRoutine.workoutSessions;
 
