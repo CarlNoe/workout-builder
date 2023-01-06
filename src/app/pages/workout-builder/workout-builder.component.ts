@@ -51,7 +51,9 @@ export class WorkoutBuilderComponent {
     this.workoutRoutineName = '';
     this.workoutRoutineDescription = '';
 
-    const nameInput = document.getElementById('workout-name') as HTMLInputElement;
+    const nameInput = document.getElementById(
+      'workout-name'
+    ) as HTMLInputElement;
     const descriptionTextarea = document.getElementById(
       'workout-description'
     ) as HTMLTextAreaElement;

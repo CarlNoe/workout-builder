@@ -22,9 +22,11 @@ export class ExerciseComponent {
 
   @Output() exerciseDeleted = new EventEmitter<void>();
 
-
   onDeleteClick() {
-    this.LsWorkoutRoutineService.deleteLsExercise(this.workoutExercise, this.workoutSession);
+    this.LsWorkoutRoutineService.deleteLsExercise(
+      this.workoutExercise,
+      this.workoutSession
+    );
     this.exerciseDeleted.emit();
   }
 

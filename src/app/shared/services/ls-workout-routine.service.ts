@@ -64,7 +64,7 @@ export class LsWorkoutRoutineService {
     );
 
     workoutSessionExercises.splice(workoutSessionExercise, 1);
-    
+
     localStorage.setItem('workoutRoutine', JSON.stringify(workoutRoutine));
   }
 
