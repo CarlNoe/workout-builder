@@ -28,7 +28,20 @@ export class WorkoutBuilderComponent {
     console.log(exercise);
   }
 
+  onWorkoutNameChanged(event: Event) {
+    const workoutRoutineName = (event.target as HTMLInputElement).value;
+    this.LsWorkoutRoutineService.updateLsWorkoutName(workoutRoutineName);
+  }
+
+  onWorkoutDescriptionChanged(event: Event) {
+    const workoutRoutineDescription = (event.target as HTMLInputElement).value;
+    this.LsWorkoutRoutineService.updateLsWorkoutDescription(
+      workoutRoutineDescription
+    );
+  }
+
   ngOnInit() {
+    this.LsWorkoutRoutineService.initLsWorkoutRoutine();
     this.getLsWorkoutSessions();
   }
 

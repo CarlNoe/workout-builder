@@ -22,5 +22,18 @@ export class LsWorkoutRoutineService {
     }
     localStorage.setItem('workoutRoutine', JSON.stringify(workoutRoutine));
   }
+
+  updateLsWorkoutName(workoutRoutineName: string) {
+    let workoutRoutine = this.getLsWorkoutRoutine();
+    workoutRoutine.workoutRoutineName = workoutRoutineName;
+    localStorage.setItem('workoutRoutine', JSON.stringify(workoutRoutine));
+  }
+
+  updateLsWorkoutDescription(workoutRoutineDescription: string) {
+    let workoutRoutine = this.getLsWorkoutRoutine();
+    workoutRoutine.workoutRoutineDescription = workoutRoutineDescription;
+    localStorage.setItem('workoutRoutine', JSON.stringify(workoutRoutine));
+  }
+
   constructor() {}
 }
