@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Exercise } from 'src/app/shared/models/exercise';
 import { WorkoutExercise } from 'src/app/shared/models/workout-exercise';
+import { LsWorkoutRoutineService } from 'src/app/shared/services/ls-workout-routine.service';
 @Component({
   selector: 'app-workout-builder',
   templateUrl: './workout-builder.component.html',
@@ -10,16 +11,17 @@ export class WorkoutBuilderComponent {
 
   showPopup: boolean = false;
 
-  workoutExerciseList: WorkoutExercise[] = [];
+  workoutSessions: any[] = [];
 
   togglePopup() {
     this.showPopup = !this.showPopup;
   }
 
-  getExercisesFromLocalStorage() {
-    let exercises = JSON.parse(localStorage.getItem('exercises') || '[]');
-
-    this.workoutExerciseList = exercises;
+  getLsWorkoutSessions() {
+    const workoutRoutine = this.LsWorkoutRoutineService.getLsWorkoutRoutine();
+    if (workoutRoutine.workoutSessions.length > 0) {
+      this.workoutSessions = workoutRoutine.workoutSessions;
+    }
   }
 
   onExerciseSelected(exercise: any) {
@@ -27,8 +29,8 @@ export class WorkoutBuilderComponent {
   }
 
   ngOnInit() {
-    this.getExercisesFromLocalStorage();
+    this.getLsWorkoutSessions();
   }
 
-  constructor() {}
+  constructor(private LsWorkoutRoutineService: LsWorkoutRoutineService) {}
 }

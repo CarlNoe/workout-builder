@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-add-exercise',
@@ -6,4 +6,5 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 export class AddExerciseComponent {
   @Output() togglePopup = new EventEmitter<void>();
+  @Input() workoutSession: number = 0;
 }

@@ -1,5 +1,6 @@
 import { WorkoutExercise } from 'src/app/shared/models/workout-exercise';
 import { Component, Input } from '@angular/core';
+import { LsWorkoutRoutineService } from 'src/app/shared/services/ls-workout-routine.service';
 
 @Component({
   selector: 'app-exercise',
@@ -17,13 +18,21 @@ export class ExerciseComponent {
     setAmount: 0,
   };
 
-  deleteWorkoutExerciseFromLocalStorage() {
-    let exercises = JSON.parse(localStorage.getItem('exercises') || '[]');
+  @Input() workoutSession: number = 0;
 
-    exercises = exercises.filter(
-      (exercise: WorkoutExercise) => exercise.id !== this.workoutExercise.id
+  deleteLsExercise() {
+    let workoutRoutine = this.LsWorkoutRoutineService.getLsWorkoutRoutine();
+
+    let workoutSession = workoutRoutine.workoutSessions.find(
+      (session: any) => session.session === this.workoutSession
     );
 
-    localStorage.setItem('exercises', JSON.stringify(exercises));
+    workoutSession.exercises = workoutSession.exercises.filter(
+      (exercise: any) => exercise.id !== this.workoutExercise.id
+    );
+
+    localStorage.setItem('workoutRoutine', JSON.stringify(workoutRoutine));
   }
+
+  constructor(private LsWorkoutRoutineService: LsWorkoutRoutineService) {}
 }

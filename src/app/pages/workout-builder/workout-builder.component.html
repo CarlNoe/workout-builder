@@ -7,13 +7,15 @@
       placeholder="Description"
     ></textarea>
   </div>
-  <h3 class="my-12">Session 1</h3>
-  <div class="flex flex-col border-l-2 border-secondary pl-4">
-    <app-exercise
-      *ngFor="let workoutExercise of workoutExerciseList"
-      [workoutExercise]="workoutExercise"
-    ></app-exercise>
-    <app-add-exercise (togglePopup)="togglePopup()"></app-add-exercise>
+  <div *ngFor="let workoutSession of workoutSessions">
+    <h3 class="my-12">Session {{ workoutSession.session }}</h3>
+    <div class="flex flex-col border-l-2 border-secondary pl-4">
+      <app-exercise
+        *ngFor="let workoutExercise of workoutSession.exercises"
+        [workoutExercise]="workoutExercise"
+      ></app-exercise>
+      <app-add-exercise (togglePopup)="togglePopup()"></app-add-exercise>
+    </div>
   </div>
 </main>
 <app-popup
