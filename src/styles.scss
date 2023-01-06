@@ -78,6 +78,18 @@
     @apply transition-all;
   }
 
+  .del-btn {
+    @apply bg-red-500;
+    @apply font-main;
+    @apply py-2;
+    @apply px-4;
+    @apply my-2;
+    @apply text-lg;
+    @apply border-red-500;
+    @apply border-2;
+    @apply transition-all;
+  }
+
   .text-input {
     @apply bg-tertiary;
     @apply border-none;

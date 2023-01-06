@@ -17,7 +17,7 @@ export class WorkoutBuilderComponent {
     this.showPopup = !this.showPopup;
   }
 
-  getLsWorkoutSessions() {
+  setWorkoutSessions() {
     const workoutRoutine = this.LsWorkoutRoutineService.getLsWorkoutRoutine();
     if (workoutRoutine.workoutSessions.length > 0) {
       this.workoutSessions = workoutRoutine.workoutSessions;
@@ -40,9 +40,19 @@ export class WorkoutBuilderComponent {
     );
   }
 
+  onAddSessionClick() {
+    this.LsWorkoutRoutineService.addLsWorkoutSession();
+    this.setWorkoutSessions();
+  }
+
+  onDeleteWorkoutRoutineClick() {
+    this.LsWorkoutRoutineService.deleteLsWorkoutRoutine();
+    this.setWorkoutSessions();
+  }
+
   ngOnInit() {
     this.LsWorkoutRoutineService.initLsWorkoutRoutine();
-    this.getLsWorkoutSessions();
+    this.setWorkoutSessions();
   }
 
   constructor(private LsWorkoutRoutineService: LsWorkoutRoutineService) {}

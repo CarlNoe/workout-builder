@@ -35,5 +35,19 @@ export class LsWorkoutRoutineService {
     localStorage.setItem('workoutRoutine', JSON.stringify(workoutRoutine));
   }
 
+  addLsWorkoutSession() {
+    let workoutRoutine = this.getLsWorkoutRoutine();
+    workoutRoutine.workoutSessions.push({
+      session: workoutRoutine.workoutSessions.length + 1,
+      workoutExercises: [],
+    });
+    localStorage.setItem('workoutRoutine', JSON.stringify(workoutRoutine));
+  }
+
+  deleteLsWorkoutRoutine() {
+    localStorage.removeItem('workoutRoutine');
+    this.initLsWorkoutRoutine();
+  }
+
   constructor() {}
 }
