@@ -1,5 +1,5 @@
 import { WorkoutExercise } from 'src/app/shared/models/workout-exercise';
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { LsWorkoutRoutineService } from 'src/app/shared/services/ls-workout-routine.service';
 
 @Component({
@@ -20,18 +20,12 @@ export class ExerciseComponent {
 
   @Input() workoutSession: number = 0;
 
-  deleteLsExercise() {
-    let workoutRoutine = this.LsWorkoutRoutineService.getLsWorkoutRoutine();
+  @Output() exerciseDeleted = new EventEmitter<void>();
 
-    let workoutSession = workoutRoutine.workoutSessions.find(
-      (session: any) => session.session === this.workoutSession
-    );
 
-    workoutSession.exercises = workoutSession.exercises.filter(
-      (exercise: any) => exercise.id !== this.workoutExercise.id
-    );
-
-    localStorage.setItem('workoutRoutine', JSON.stringify(workoutRoutine));
+  onDeleteClick() {
+    this.LsWorkoutRoutineService.deleteLsExercise(this.workoutExercise, this.workoutSession);
+    this.exerciseDeleted.emit();
   }
 
   constructor(private LsWorkoutRoutineService: LsWorkoutRoutineService) {}

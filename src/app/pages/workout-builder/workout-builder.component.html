@@ -2,33 +2,58 @@
   <h2 class="mb-8">Create your workout routine</h2>
 
   <div class="flex flex-col w-full">
-    <input class="text-input" placeholder="Workout Name" (change)="onWorkoutNameChanged($event)"/>
+    <input
+      id="workout-name"
+      class="text-input"
+      placeholder="Workout Name"
+      (change)="onWorkoutNameChanged($event)"
+      [value]="workoutRoutineName"
+    />
     <textarea
+      id="workout-description"
       class="text-input mt-4"
       placeholder="Description"
       (change)="onWorkoutDescriptionChanged($event)"
+      [value]="workoutRoutineDescription"
     ></textarea>
   </div>
 
   <div *ngFor="let workoutSession of workoutSessions">
     <h3 class="my-12">Day {{ workoutSession.session }}</h3>
     <div class="flex flex-col border-l-2 border-secondary pl-4">
+      
       <app-exercise
         *ngFor="let workoutExercise of workoutSession.exercises"
         [workoutExercise]="workoutExercise"
+        (exerciseDeleted)="updateWorkoutSessions()"
       ></app-exercise>
+
       <app-add-exercise (togglePopup)="togglePopup()"></app-add-exercise>
+
     </div>
   </div>
-  <button class="mt-12 w-fit underline font-bold text-xl" (click)="onAddSessionClick()">+ Add a session</button>
+
+  <button
+    class="mt-12 w-fit underline font-bold text-xl"
+    (click)="onAddSessionClick()"
+  >
+    + Add a session
+  </button>
   <div class="flex self-center">
-    <button class="main-btn mt-16 mx-4 px-12 self-center">Save Workout Routine</button>
-    <button class="del-btn mt-16 mx-4 px-12 self-center" (click)="onDeleteWorkoutRoutineClick()">Delete Workout Routine</button>
+    <button class="main-btn mt-16 mx-4 px-12 self-center">
+      Save Workout Routine
+    </button>
+    <button
+      class="del-btn mt-16 mx-4 px-12 self-center"
+      (click)="onDeleteWorkoutRoutineClick()"
+    >
+      Delete Workout Routine
+    </button>
   </div>
 </main>
 
 <app-popup
   *ngIf="showPopup"
   (closePopup)="togglePopup()"
-  (exerciseSelected)="onExerciseSelected($event)"
+  (exerciseAdded)="updateWorkoutSessions()"
 ></app-popup>

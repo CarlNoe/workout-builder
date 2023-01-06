@@ -9,6 +9,7 @@ import { Exercise } from 'src/app/shared/models/exercise';
 })
 export class PopupComponent {
   @Output() closePopup = new EventEmitter<void>();
+  @Output() exerciseAdded = new EventEmitter<void>();
   @Input() workoutSession: number = 0;
 
   exercises: Exercise[] = [];
@@ -72,6 +73,7 @@ export class PopupComponent {
 
   onAddExerciseClick() {
     this.addExerciseToLs();
+    this.exerciseAdded.emit();
     this.closePopup.emit();
   }
 

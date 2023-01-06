@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Exercise } from 'src/app/shared/models/exercise';
-import { WorkoutExercise } from 'src/app/shared/models/workout-exercise';
 import { LsWorkoutRoutineService } from 'src/app/shared/services/ls-workout-routine.service';
 @Component({
   selector: 'app-workout-builder',
@@ -11,17 +10,17 @@ export class WorkoutBuilderComponent {
 
   showPopup: boolean = false;
 
+  workoutRoutineName: string = '';
+  workoutRoutineDescription: string = '';
   workoutSessions: any[] = [];
 
   togglePopup() {
     this.showPopup = !this.showPopup;
   }
 
-  setWorkoutSessions() {
-    const workoutRoutine = this.LsWorkoutRoutineService.getLsWorkoutRoutine();
-    if (workoutRoutine.workoutSessions.length > 0) {
-      this.workoutSessions = workoutRoutine.workoutSessions;
-    }
+  updateWorkoutSessions() {
+    this.workoutSessions =
+      this.LsWorkoutRoutineService.getLsWorkoutRoutine().workoutSessions;
   }
 
   onExerciseSelected(exercise: any) {
@@ -42,17 +41,34 @@ export class WorkoutBuilderComponent {
 
   onAddSessionClick() {
     this.LsWorkoutRoutineService.addLsWorkoutSession();
-    this.setWorkoutSessions();
+    this.updateWorkoutSessions();
   }
 
   onDeleteWorkoutRoutineClick() {
     this.LsWorkoutRoutineService.deleteLsWorkoutRoutine();
-    this.setWorkoutSessions();
+    this.updateWorkoutSessions();
+    this.workoutRoutineName = '';
+    this.workoutRoutineDescription = '';
+
+    const nameInput = document.getElementById('workout-name') as HTMLInputElement;
+    const descriptionTextarea = document.getElementById(
+      'workout-description'
+    ) as HTMLTextAreaElement;
+
+    nameInput.value = '';
+    descriptionTextarea.value = '';
   }
 
   ngOnInit() {
-    this.LsWorkoutRoutineService.initLsWorkoutRoutine();
-    this.setWorkoutSessions();
+    let workoutRoutine = this.LsWorkoutRoutineService.getLsWorkoutRoutine();
+
+    if (!workoutRoutine) {
+      this.LsWorkoutRoutineService.initLsWorkoutRoutine();
+      workoutRoutine = this.LsWorkoutRoutineService.getLsWorkoutRoutine();
+    }
+    this.workoutRoutineName = workoutRoutine.workoutRoutineName;
+    this.workoutRoutineDescription = workoutRoutine.workoutRoutineDescription;
+    this.workoutSessions = workoutRoutine.workoutSessions;
   }
 
   constructor(private LsWorkoutRoutineService: LsWorkoutRoutineService) {}
