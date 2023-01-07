@@ -1,27 +1,80 @@
-# WorkoutBuilder
+<div align="center">
+  <h1 align="center">WorkoutBuilder</h3>
+  <img src="https://user-images.githubusercontent.com/78510016/211168572-382d0e7c-887f-41c9-baee-44281cd8226a.png"/>
+  <br/>
+  <br/>
+  <div align="center">
+    <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black"/>
+  </div>
+  <br/>
+  <p align="center">
+    A workout routine builder and explorer built with Angular, TailwindCSS, and Firebase.
+  </p>
+</div>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+        <a href="#getting-started">Getting Started</a>
+        <ul>
+            <li><a href="#prerequisites">Prerequisites</a></li>
+            <li><a href="#installation">Installation</a></li>
+        </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#todo">TODO</a></li>
+  </ol>
+</details>
 
-## Development server
+<!-- GETTING STARTED -->
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Getting Started
 
-## Code scaffolding
+To get a local copy up and running follow these simple steps.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Prerequisites
 
-## Build
+This is an example of how to list things you need to use the software and how to install them.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-## Running unit tests
+### Installation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Clone the repo
+   ```sh
+   git clone https://github.com/CarlNoe/workout-builder.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Add the Api Keys (Firebase API key + ExercisesAPI key) to environment_example.ts, then rename the file to environment.ts
 
-## Running end-to-end tests
+<!-- USAGE EXAMPLES -->
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Usage
 
-## Further help
+1. Run the app by going to the root directory and running
+   ```sh
+   ng serve
+   ```
+2. Navigate to localhost:4200
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<!-- ROADMAP -->
+
+## TODO
+
+- Secure the user connection
+- Add popups that confirm the user's actions and display errors
+- Better Navigation in the exercise list
+- Add a search bar to the exercise list
+- Use modules to organize the code
+- /!\ Find a long term solution for the Angular/Fire incompatible version
+  (Currently fixable by adding the type <T> at the end of the functions in "node_modules\@angular\fire\compat\firestore\interfaces.d.ts")
