@@ -1,1 +1,44 @@
-<p>register works!</p>
+<main class="px-[10%] flex flex-col justify-center items-center min-h-screen">
+  <div class="flex flex-col w-2/3 justify-center bg-tertiary p-16">
+    <div class="mb-3">
+      <h2 class="text-dark text-muted">Register</h2>
+    </div>
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="onRegister()"
+      class="flex flex-col"
+    >
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+        placeholder="Enter your email"
+      />
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        formControlName="password"
+        placeholder="Enter your password"
+      />
+      <button type="submit" class="main-btn mt-16">Submit</button>
+    </form>
+    <div class="my-2">
+      <a routerLink="/login" class="text-blue-500"
+        ><span class="text-white">Have an account ?</span> Login</a
+      >
+    </div>
+  </div>
+  <div class="flex justify-center items-center self-centers mt-8">
+    <button
+      (click)="onGoogleClick()"
+      class="bg-tertiary flex justify-center items-center w-fit py-2 px-4 mx-4"
+    >
+      <img src="./assets/img/google.svg" alt="Google" class="w-8 h-8 mx-2" />
+      <span> Continue with Google </span>
+    </button>
+  </div>
+</main>
