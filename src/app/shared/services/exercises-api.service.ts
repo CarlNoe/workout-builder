@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'environment';
+import { environment } from 'src/environments/environment';
 
 const options = {
   headers: new HttpHeaders({
-    'X-RapidAPI-Key': environment.API_KEY,
-    'X-RapidAPI-Host': environment.API_HOST,
+    'X-RapidAPI-Key': environment.exerciseApiKey,
+    'X-RapidAPI-Host': environment.exerciseApiHost,
   }),
 };
 
