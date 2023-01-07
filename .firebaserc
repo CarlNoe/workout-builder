@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "workout-builder-angular"
+  },
+  "targets": {
+    "workout-builder-angular": {
+      "hosting": {
+        "workout-builder": [
+          "workout-builder-angular"
+        ]
+      }
+    }
   }
 }
