@@ -5,6 +5,7 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
   templateUrl: './add-exercise.component.html',
 })
 export class AddExerciseComponent {
-  @Output() togglePopup = new EventEmitter<void>();
-  @Input() workoutSession: number = 0;
+  @Input() popupSession: number = 0;
+
+  @Output() openPopup = new EventEmitter<number>();
 }

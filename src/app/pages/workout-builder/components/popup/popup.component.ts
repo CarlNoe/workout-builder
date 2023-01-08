@@ -10,7 +10,7 @@ import { Exercise } from 'src/app/shared/models/exercise';
 export class PopupComponent implements OnInit {
   @Output() closePopup = new EventEmitter<void>();
   @Output() exerciseAdded = new EventEmitter<void>();
-  @Input() workoutSession: number = 0;
+  @Input() popupSession: number = 0;
 
   exercises: Exercise[] = [];
 
@@ -50,22 +50,24 @@ export class PopupComponent implements OnInit {
       this.LsWorkoutRoutineService.initLsWorkoutRoutine();
     }
     workoutRoutine = this.LsWorkoutRoutineService.getLsWorkoutRoutine();
+    console.log(workoutRoutine, "workoutRoutine")
 
     // Get the workoutSession from the workoutRoutine
     let workoutSession = workoutRoutine.workoutSessions.find(
-      (session: any) => session.session === this.workoutSession
+      (session: any) => session.session === this.popupSession
     );
+    console.log(workoutSession, "workoutSession1")
     // If the workoutSession doesn't exist, create a new one
     if (!workoutSession) {
       workoutSession = {
-        session: this.workoutSession,
+        session: this.popupSession,
         exercises: [],
       };
       workoutRoutine.workoutSessions.push(workoutSession);
     }
-
+    console.log(workoutSession, "workoutSession2")
     workoutSession.exercises.push(exercise);
-
+    console.log(workoutSession, "workoutSession3")
     // Save the workoutRoutine to local storage
     localStorage.setItem('workoutRoutine', JSON.stringify(workoutRoutine));
   }

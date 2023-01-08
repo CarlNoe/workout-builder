@@ -39,7 +39,7 @@ export class LsWorkoutRoutineService {
     let workoutRoutine = this.getLsWorkoutRoutine();
     workoutRoutine.workoutSessions.push({
       session: workoutRoutine.workoutSessions.length + 1,
-      exercise: [],
+      exercises: [],
     });
     localStorage.setItem('workoutRoutine', JSON.stringify(workoutRoutine));
   }

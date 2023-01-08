@@ -27,7 +27,10 @@
         (exerciseDeleted)="updateWorkoutSessions()"
       ></app-exercise>
 
-      <app-add-exercise (togglePopup)="togglePopup()"></app-add-exercise>
+      <app-add-exercise
+        (openPopup)="openPopup($event)"
+        [popupSession]="workoutSession.session"
+      ></app-add-exercise>
     </div>
   </div>
 
@@ -38,7 +41,10 @@
     + Add a session
   </button>
   <div class="flex self-center">
-    <button class="main-btn mt-16 mx-4 px-12 self-center" (click)="onSaveWorkoutRoutineClick()">
+    <button
+      class="main-btn mt-16 mx-4 px-12 self-center"
+      (click)="onSaveWorkoutRoutineClick()"
+    >
       Save Workout Routine
     </button>
     <button
@@ -52,6 +58,7 @@
 
 <app-popup
   *ngIf="showPopup"
-  (closePopup)="togglePopup()"
+  [popupSession]="currentPopupSession"
+  (closePopup)="closePopup()"
   (exerciseAdded)="updateWorkoutSessions()"
 ></app-popup>

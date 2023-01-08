@@ -31,18 +31,26 @@ export class WorkoutBuilderComponent implements OnInit {
       this.LsWorkoutRoutineService.initLsWorkoutRoutine();
       workoutRoutine = this.LsWorkoutRoutineService.getLsWorkoutRoutine();
     }
+    
     this.workoutRoutineName = workoutRoutine.workoutRoutineName;
     this.workoutRoutineDescription = workoutRoutine.workoutRoutineDescription;
     this.workoutSessions = workoutRoutine.workoutSessions;
   }
 
-  togglePopup() {
-    this.showPopup = !this.showPopup;
+  openPopup(popupSession: number) {
+    console.log(popupSession, 'openPopup()');
+    this.currentPopupSession = popupSession;
+    this.showPopup = true;
+  }
+
+  closePopup() {
+    this.showPopup = false;
   }
 
   updateWorkoutSessions() {
     this.workoutSessions =
       this.LsWorkoutRoutineService.getLsWorkoutRoutine().workoutSessions;
+  
   }
 
   onExerciseSelected(exercise: any) {
@@ -87,6 +95,33 @@ export class WorkoutBuilderComponent implements OnInit {
     const workoutRoutine = this.LsWorkoutRoutineService.getLsWorkoutRoutine();
     const token = this.fireauthService.getToken();
 
+    if (!workoutRoutine) {
+      alert('Please add at least 1 sessions to your workout routine');
+      return;
+    }
+
+    if (workoutRoutine.workoutRoutineName === '') {
+      alert('Please add a name to your workout routine');
+      return;
+    }
+
+    if (workoutRoutine.workoutRoutineDescription === '') {
+      alert('Please add a description to your workout routine');
+      return;
+    }
+
+    if (workoutRoutine.workoutSessions.length === 0) {
+      alert('Please add at least one session to your workout routine');
+      return;
+    }
+
+    workoutRoutine.workoutSessions.forEach((session: any) => {
+      if (session.exercises.length === 0) {
+        alert('Please add at least one exercise to each session');
+        return;
+      }
+    });
+
     if (token) {
       this.firestoreService
         .addWorkoutRoutine(workoutRoutine, token)
@@ -96,6 +131,8 @@ export class WorkoutBuilderComponent implements OnInit {
         .catch((err) => {
           alert(`${err.message} Please try again`);
         });
+      this.LsWorkoutRoutineService.deleteLsWorkoutRoutine();
+      this.updateWorkoutSessions();
     } else {
       alert('Please login to save your workout routine');
     }
