@@ -57,6 +57,19 @@ This is an example of how to list things you need to use the software and how to
    ```
 3. Add the Api Keys (Firebase API key + ExercisesAPI key) to environment_example.ts, then rename the file to environment.ts
 
+4. Until angular.fire is fixed or until I find a permanent fix for the incompatibility between angular and angular/fire,
+   you'll have to follow these steps:
+
+   In the project go to: `node_modules\@angular\fire\compat\firestore\interfaces.d.ts`
+   Then add the type ```<T>``` and the end of the lines highlited in red
+   <br/>
+  <br/>
+   <img src="https://user-images.githubusercontent.com/78510016/211215298-101334f6-5377-4efa-88be-4687bb9493ce.png" height="100px"/>
+   <br/>
+   to
+   <br/>
+   <img src="https://user-images.githubusercontent.com/78510016/211215311-f1df280a-2d42-4c36-89c7-41b72fb783ff.png" height="100px"/>
+
 <!-- USAGE EXAMPLES -->
 
 ## Usage
