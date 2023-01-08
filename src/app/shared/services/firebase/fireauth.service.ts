@@ -13,6 +13,18 @@ export class FireauthService {
     private firestoreService: FirestoreService
   ) {}
 
+  private setToken() {
+    this.fireauth.currentUser.then((user) => {
+      if (user) {
+        localStorage.setItem('token', user.uid);
+      }
+    });
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
   login(email: string, password: string) {
     this.fireauth.signInWithEmailAndPassword(email, password).then(
       () => {
@@ -51,13 +63,5 @@ export class FireauthService {
         alert(err.message);
       }
     );
-  }
-
-  private setToken() {
-    this.fireauth.currentUser.then((user) => {
-      if (user) {
-        localStorage.setItem('token', user.uid);
-      }
-    });
   }
 }

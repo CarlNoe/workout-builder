@@ -30,13 +30,17 @@ export class FirestoreService {
 
   // Workout Routines CRUD
   addWorkoutRoutine(workoutRoutine: WorkoutRoutine, userId: string) {
-    this.firestore
-      .collection('users')
-      .doc(userId)
-      .update({
-        WorkoutRoutines:
-          firebase.firestore.FieldValue.arrayUnion(workoutRoutine),
-      });
+    return new Promise((resolve, reject) => {
+      this.firestore
+        .collection('users')
+        .doc(userId)
+        .update({
+          WorkoutRoutines:
+            firebase.firestore.FieldValue.arrayUnion(workoutRoutine),
+        })
+        .then(resolve)
+        .catch(reject);
+    });
   }
 
   getWorkoutRoutine(userId: string, workoutRoutineId: string) {

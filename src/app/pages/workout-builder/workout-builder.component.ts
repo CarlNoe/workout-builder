@@ -1,11 +1,14 @@
-import { Component, Input } from '@angular/core';
+import { getAuth } from '@angular/fire/auth';
+import { Component, Input, OnInit } from '@angular/core';
 import { Exercise } from 'src/app/shared/models/exercise';
 import { LsWorkoutRoutineService } from 'src/app/shared/services/ls-workout-routine.service';
+import { FirestoreService } from 'src/app/shared/services/firebase/firestore.service';
+import { FireauthService } from 'src/app/shared/services/firebase/fireauth.service';
 @Component({
   selector: 'app-workout-builder',
   templateUrl: './workout-builder.component.html',
 })
-export class WorkoutBuilderComponent {
+export class WorkoutBuilderComponent implements OnInit {
   @Input() selectedExercise: Exercise | undefined;
 
   currentPopupSession: number = 0;
@@ -14,6 +17,24 @@ export class WorkoutBuilderComponent {
   workoutRoutineName: string = '';
   workoutRoutineDescription: string = '';
   workoutSessions: any[] = [];
+
+  constructor(
+    private LsWorkoutRoutineService: LsWorkoutRoutineService,
+    private firestoreService: FirestoreService,
+    private fireauthService: FireauthService
+  ) {}
+
+  ngOnInit() {
+    let workoutRoutine = this.LsWorkoutRoutineService.getLsWorkoutRoutine();
+
+    if (!workoutRoutine) {
+      this.LsWorkoutRoutineService.initLsWorkoutRoutine();
+      workoutRoutine = this.LsWorkoutRoutineService.getLsWorkoutRoutine();
+    }
+    this.workoutRoutineName = workoutRoutine.workoutRoutineName;
+    this.workoutRoutineDescription = workoutRoutine.workoutRoutineDescription;
+    this.workoutSessions = workoutRoutine.workoutSessions;
+  }
 
   togglePopup() {
     this.showPopup = !this.showPopup;
@@ -62,17 +83,21 @@ export class WorkoutBuilderComponent {
     descriptionTextarea.value = '';
   }
 
-  ngOnInit() {
-    let workoutRoutine = this.LsWorkoutRoutineService.getLsWorkoutRoutine();
+  onSaveWorkoutRoutineClick() {
+    const workoutRoutine = this.LsWorkoutRoutineService.getLsWorkoutRoutine();
+    const token = this.fireauthService.getToken();
 
-    if (!workoutRoutine) {
-      this.LsWorkoutRoutineService.initLsWorkoutRoutine();
-      workoutRoutine = this.LsWorkoutRoutineService.getLsWorkoutRoutine();
+    if (token) {
+      this.firestoreService
+        .addWorkoutRoutine(workoutRoutine, token)
+        .then(() => {
+          alert('Workout routine saved successfully');
+        })
+        .catch((err) => {
+          alert(`${err.message} Please try again`);
+        });
+    } else {
+      alert('Please login to save your workout routine');
     }
-    this.workoutRoutineName = workoutRoutine.workoutRoutineName;
-    this.workoutRoutineDescription = workoutRoutine.workoutRoutineDescription;
-    this.workoutSessions = workoutRoutine.workoutSessions;
   }
-
-  constructor(private LsWorkoutRoutineService: LsWorkoutRoutineService) {}
 }

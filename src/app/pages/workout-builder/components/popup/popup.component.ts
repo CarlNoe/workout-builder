@@ -7,7 +7,7 @@ import { Exercise } from 'src/app/shared/models/exercise';
   selector: 'app-popup',
   templateUrl: './popup.component.html',
 })
-export class PopupComponent {
+export class PopupComponent implements OnInit {
   @Output() closePopup = new EventEmitter<void>();
   @Output() exerciseAdded = new EventEmitter<void>();
   @Input() workoutSession: number = 0;
@@ -25,6 +25,17 @@ export class PopupComponent {
 
   repAmount: number = 0;
   setAmount: number = 0;
+
+  constructor(
+    private exercisesApiService: ExercisesApiService,
+    private LsWorkoutRoutineService: LsWorkoutRoutineService
+  ) {}
+
+  ngOnInit(): void {
+    this.exercisesApiService.getExercises().subscribe((data: any) => {
+      this.exercises = data;
+    });
+  }
 
   addExerciseToLs() {
     const exercise = {
@@ -82,15 +93,4 @@ export class PopupComponent {
       this.closePopup.emit();
     }
   }
-
-  ngOnInit(): void {
-    this.exercisesApiService.getExercises().subscribe((data: any) => {
-      this.exercises = data;
-    });
-  }
-
-  constructor(
-    private exercisesApiService: ExercisesApiService,
-    private LsWorkoutRoutineService: LsWorkoutRoutineService
-  ) {}
 }
