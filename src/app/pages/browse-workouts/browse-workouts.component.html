@@ -1,18 +1,19 @@
 <main class="px-[10%] py-16">
-  <h2>Our Workouts</h2>
-  <div class="flex flex-wrap w-full justify-center">
-    <app-workout-item></app-workout-item>
-    <app-workout-item></app-workout-item>
-    <app-workout-item></app-workout-item>
-    <app-workout-item></app-workout-item>
+  <div>
+    <h2>My workouts</h2>
+    <div class="flex flex-wrap w-full justify-center" *ngIf="isLoggedIn">
+      <app-workout-item></app-workout-item>
+    </div>
   </div>
-  <h2>Community workouts</h2>
-  <div class="flex flex-wrap w-full justify-center">
-    <app-workout-item></app-workout-item>
-    <app-workout-item></app-workout-item>
-    <app-workout-item></app-workout-item>
-    <app-workout-item></app-workout-item>
-    <app-workout-item></app-workout-item>
-    <app-workout-item></app-workout-item>
+  <div>
+    <h2>Community workouts</h2>
+    <div class="flex flex-wrap w-full justify-center">
+      <app-workout-item></app-workout-item>
+      <app-workout-item></app-workout-item>
+      <app-workout-item></app-workout-item>
+      <app-workout-item></app-workout-item>
+      <app-workout-item></app-workout-item>
+      <app-workout-item></app-workout-item>
+    </div>
   </div>
 </main>

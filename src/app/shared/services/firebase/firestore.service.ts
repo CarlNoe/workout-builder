@@ -52,6 +52,14 @@ export class FirestoreService {
       .snapshotChanges();
   }
 
+  getUserWorkoutRoutines(userId: string) {
+    return this.firestore
+      .collection('users')
+      .doc(userId)
+      .collection('WorkoutRoutines')
+      .snapshotChanges();
+  }
+
   updateWorkoutRoutine(
     userId: string,
     workoutRoutineId: string,
@@ -73,4 +81,5 @@ export class FirestoreService {
       .doc(workoutRoutineId)
       .delete();
   }
+
 }

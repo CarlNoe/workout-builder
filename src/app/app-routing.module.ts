@@ -7,6 +7,7 @@ import { WorkoutBuilderComponent } from './pages/workout-builder/workout-builder
 import { AboutComponent } from './pages/about/about.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
+import { WorkoutRoutineComponent } from './pages/workout-routine/workout-routine.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'workout-routine/:routineId', component: WorkoutRoutineComponent },
 ];
 
 @NgModule({

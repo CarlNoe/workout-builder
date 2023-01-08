@@ -72,7 +72,8 @@ This is an example of how to list things you need to use the software and how to
 ## TODO
 
 - /!\ Secure firebase and user connections (https://firebase.google.com/docs/firestore/quickstart#secure_your_data)
-- Add popups that confirm the user's actions and display errors
+- Make the nav bar listening to the user's auth state
+- Add user friendly popups that confirm the user's actions and display errors
 - Better Navigation in the exercise list
 - Add a search bar to the exercise list
 - Get all exercise instead of a random fraction of them

@@ -8,11 +8,6 @@ import { Subject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FireauthService {
-  private loginStatusSubject = new Subject<boolean>();
-
-  public loginStatusObservable: Observable<boolean> =
-    this.loginStatusSubject.asObservable();
-
   constructor(
     private fireauth: AngularFireAuth,
     private router: Router,
@@ -27,15 +22,15 @@ export class FireauthService {
     });
   }
 
-  getToken() {
-    return localStorage.getItem('token');
+  getToken(): string {
+    let token = localStorage.getItem('token');
+    return token ? token : '';
   }
 
   login(email: string, password: string) {
     this.fireauth.signInWithEmailAndPassword(email, password).then(
       () => {
         this.setToken();
-        this.loginStatusSubject.next(true);
         this.router.navigate(['/']);
       },
       (err) => {
@@ -50,7 +45,6 @@ export class FireauthService {
         if (res.user) {
           this.firestoreService.addUser(res.user.uid, email);
           this.setToken();
-          this.loginStatusSubject.next(true);
           this.router.navigate(['/']);
           alert('User created successfully');
         } else {
@@ -67,7 +61,6 @@ export class FireauthService {
     this.fireauth.signOut().then(
       () => {
         localStorage.removeItem('token');
-        this.loginStatusSubject.next(false);
       },
       (err) => {
         alert(err.message);
@@ -75,16 +68,4 @@ export class FireauthService {
     );
   }
 
-  async isAuthenticated() {
-    const token = this.getToken();
-    if (!this.getToken()) {
-      return false;
-    }
-    const currentUser = await this.fireauth.currentUser;
-    if (!currentUser) {
-      return false;
-    } else {
-      return currentUser.uid === token;
-    }
-  }
 }

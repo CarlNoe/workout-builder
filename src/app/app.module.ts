@@ -25,6 +25,7 @@ import { ExerciseComponent } from './pages/workout-builder/components/exercise/e
 import { AddExerciseComponent } from './pages/workout-builder/components/add-exercise/add-exercise.component';
 import { PopupComponent } from './pages/workout-builder/components/popup/popup.component';
 import { TextInputComponent } from './shared/components/text-input/text-input.component';
+import { WorkoutRoutineComponent } from './pages/workout-routine/workout-routine.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { TextInputComponent } from './shared/components/text-input/text-input.co
     AddExerciseComponent,
     PopupComponent,
     TextInputComponent,
+    WorkoutRoutineComponent,
   ],
   imports: [
     BrowserModule,
