@@ -23,10 +23,6 @@ export class RegisterComponent {
     }
   }
 
-  onGoogleClick() {
-    this.fireauth.googleLogin();
-  }
-
   constructor(
     private fireauth: FireauthService,
     private formBuilder: FormBuilder

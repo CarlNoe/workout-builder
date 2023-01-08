@@ -1,33 +1,25 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { GoogleAuthProvider, GithubAuthProvider } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { FirestoreService } from './firestore.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FireauthService {
-  constructor(private fireauth: AngularFireAuth, private router: Router) {}
+  constructor(
+    private fireauth: AngularFireAuth,
+    private router: Router,
+    private firestoreService: FirestoreService
+  ) {}
 
   login(email: string, password: string) {
     this.fireauth.signInWithEmailAndPassword(email, password).then(
       () => {
-        localStorage.setItem('token', 'true');
+        this.setToken();
       },
       (err) => {
-        alert(err.message + ' Please try again');
-      }
-    );
-  }
-
-  googleLogin() {
-    this.fireauth.signInWithPopup(new GoogleAuthProvider()).then(
-      () => {
-        localStorage.setItem('token', 'true');
-        this.router.navigate(['/']);
-      },
-      (err) => {
-        alert(err.message);
+        alert(`${err.message} Please try again`);
       }
     );
   }
@@ -35,11 +27,16 @@ export class FireauthService {
   register(email: string, password: string) {
     this.fireauth.createUserWithEmailAndPassword(email, password).then(
       (res) => {
-        alert('Registration Successful');
-        this.router.navigate(['/login']);
+        if (res.user) {
+          this.firestoreService.addUser(res.user.uid, email);
+          this.setToken();
+          alert('User created successfully');
+        } else {
+          console.log('No res.user in register method');
+        }
       },
       (err) => {
-        alert(err.message + ' Please try again');
+        alert(`${err.message} Please try again`);
       }
     );
   }
@@ -56,5 +53,11 @@ export class FireauthService {
     );
   }
 
-  ngOnInit(): void {}
+  private setToken() {
+    this.fireauth.currentUser.then((user) => {
+      if (user) {
+        localStorage.setItem('token', user.uid);
+      }
+    });
+  }
 }
