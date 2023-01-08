@@ -1,8 +1,8 @@
 <nav class="flex w-full justify-end p-6 absolute z-50">
-  <app-nav-link
-    *ngFor="let link of links"
-    [link]="link.link"
-    [text]="link.text"
-  >
-  </app-nav-link>
+  <app-nav-link link="/" text="Home"></app-nav-link>
+  <app-nav-link link="/workout-list" text="Workout List"></app-nav-link>
+  <app-nav-link link="/workout-builder" text="Builder"></app-nav-link>
+  <app-nav-link link="/about" text="About"></app-nav-link>
+  <app-nav-link link="/register" text="Sign In/Up" *ngIf="!isLoggedIn"></app-nav-link>
+  <app-nav-link (click)="onLogout()" text="Logout" *ngIf="isLoggedIn"></app-nav-link>
 </nav>

@@ -1,33 +1,30 @@
 import { Component } from '@angular/core';
-import { NavLinkComponent } from '../nav-link/nav-link.component';
+import { FireauthService } from '../../services/firebase/fireauth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent {
-  links: NavLinkComponent[] = [
-    {
-      link: '/',
-      text: 'Home',
-    },
-    {
-      link: '/workout-list',
-      text: 'Workout List',
-    },
-    {
-      link: '/workout-builder',
-      text: 'Builder',
-    },
-    {
-      link: '/about',
-      text: 'About',
-    },
-    {
-      link: '/register',
-      text: 'Sign In/Up',
-    },
-  ];
+  isLoggedIn: boolean = false;
+  loginStatusSubscription: Subscription = new Subscription();
 
-  constructor() {}
+  constructor(private fireauthService: FireauthService) {}
+
+  ngOnInit() {
+    this.loginStatusSubscription = this.fireauthService.loginStatusObservable.subscribe(
+      (isLoggedIn: boolean) => {
+        this.isLoggedIn = isLoggedIn;
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.loginStatusSubscription.unsubscribe();
+  }
+
+  onLogout() {
+    this.fireauthService.logout();
+  }
 }

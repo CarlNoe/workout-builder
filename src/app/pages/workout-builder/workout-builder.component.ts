@@ -31,7 +31,7 @@ export class WorkoutBuilderComponent implements OnInit {
       this.LsWorkoutRoutineService.initLsWorkoutRoutine();
       workoutRoutine = this.LsWorkoutRoutineService.getLsWorkoutRoutine();
     }
-    
+
     this.workoutRoutineName = workoutRoutine.workoutRoutineName;
     this.workoutRoutineDescription = workoutRoutine.workoutRoutineDescription;
     this.workoutSessions = workoutRoutine.workoutSessions;
@@ -50,7 +50,6 @@ export class WorkoutBuilderComponent implements OnInit {
   updateWorkoutSessions() {
     this.workoutSessions =
       this.LsWorkoutRoutineService.getLsWorkoutRoutine().workoutSessions;
-  
   }
 
   onExerciseSelected(exercise: any) {

@@ -2,11 +2,17 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { FirestoreService } from './firestore.service';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FireauthService {
+  private loginStatusSubject = new Subject<boolean>();
+
+  public loginStatusObservable: Observable<boolean> =
+    this.loginStatusSubject.asObservable();
+
   constructor(
     private fireauth: AngularFireAuth,
     private router: Router,
@@ -29,6 +35,8 @@ export class FireauthService {
     this.fireauth.signInWithEmailAndPassword(email, password).then(
       () => {
         this.setToken();
+        this.loginStatusSubject.next(true);
+        this.router.navigate(['/']);
       },
       (err) => {
         alert(`${err.message} Please try again`);
@@ -42,6 +50,8 @@ export class FireauthService {
         if (res.user) {
           this.firestoreService.addUser(res.user.uid, email);
           this.setToken();
+          this.loginStatusSubject.next(true);
+          this.router.navigate(['/']);
           alert('User created successfully');
         } else {
           console.log('No res.user in register method');
@@ -57,11 +67,24 @@ export class FireauthService {
     this.fireauth.signOut().then(
       () => {
         localStorage.removeItem('token');
-        this.router.navigate(['/login']);
+        this.loginStatusSubject.next(false);
       },
       (err) => {
         alert(err.message);
       }
     );
+  }
+
+  async isAuthenticated() {
+    const token = this.getToken();
+    if (!this.getToken()) {
+      return false;
+    }
+    const currentUser = await this.fireauth.currentUser;
+    if (!currentUser) {
+      return false;
+    } else {
+      return currentUser.uid === token;
+    }
   }
 }
