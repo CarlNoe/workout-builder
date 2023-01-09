@@ -13,6 +13,6 @@ export class BrowseWorkoutsComponent implements OnInit {
   constructor(private fireauthService: FireauthService) {}
 
   ngOnInit(): void {
-    this.isLoggedIn = this.fireauthService.getToken() !== null;
+    this.isLoggedIn = this.fireauthService.getToken() !== "";
   }
 }

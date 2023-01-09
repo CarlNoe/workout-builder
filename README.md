@@ -72,12 +72,12 @@ This is an example of how to list things you need to use the software and how to
 ## TODO
 
 - /!\ Secure firebase and user connections (https://firebase.google.com/docs/firestore/quickstart#secure_your_data)
-- Make the nav bar listening to the user's auth state
-- Add user friendly popups that confirm the user's actions and display errors
-- Better Navigation in the exercise list
-- Add a search bar to the exercise list
-- Get all exercise instead of a random fraction of them
-- Use modules to organize the code
 - /!\ Find a long term solution for the Angular/Fire incompatible version
   (Currently fixable by adding the type <T> at the end of the functions in "node_modules\@angular\fire\compat\firestore\interfaces.d.ts")
+- Make the nav bar listening to the user's auth state
+- Add user friendly popups that confirm the user's actions and display errors
+- Get all exercise instead of a random fraction of them
+- Better Navigation in the exercise list
+- Add a search bar to the exercise list
+- Use modules to organize the code
 - Create models and type data that are not typed yet

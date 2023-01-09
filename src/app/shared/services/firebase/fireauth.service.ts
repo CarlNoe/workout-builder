@@ -32,6 +32,7 @@ export class FireauthService {
       () => {
         this.setToken();
         this.router.navigate(['/']);
+        alert("Connection succesful !")
       },
       (err) => {
         alert(`${err.message} Please try again`);
@@ -61,6 +62,7 @@ export class FireauthService {
     this.fireauth.signOut().then(
       () => {
         localStorage.removeItem('token');
+        alert("Logout succesful !")
       },
       (err) => {
         alert(err.message);

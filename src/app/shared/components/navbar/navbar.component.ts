@@ -11,7 +11,7 @@ export class NavbarComponent {
   constructor(private fireauthService: FireauthService) {}
 
   ngOnInit() {
-    this.isLoggedIn = this.fireauthService.getToken() !== null;
+    this.isLoggedIn = this.fireauthService.getToken() !== "";
   }
 
   onLogout() {
