@@ -1,18 +1,50 @@
 import { Injectable } from '@angular/core';
-import { LsExercise } from '../models/ls-exercise';
+
+import { WorkoutRoutine } from 'src/app/shared/models/workout-routine';
+import { WorkoutSession } from 'src/app/shared/models/workout-session';
+import { ExerciseWithSets } from '../models/exercise-with-sets';
+
 @Injectable({
   providedIn: 'root',
 })
 export class LsWorkoutRoutineService {
-  getLsWorkoutRoutine() {
-    let workoutRoutine = JSON.parse(
-      localStorage.getItem('workoutRoutine') || 'null'
+  getLsWorkoutRoutine(): WorkoutRoutine {
+    const lsWorkoutRoutine: string | null =
+      localStorage.getItem('workoutRoutine');
+
+    if (lsWorkoutRoutine === null) {
+      throw new Error('workoutRoutine is null');
+    }
+
+    return JSON.parse(lsWorkoutRoutine);
+  }
+
+  getLsSession(sessionNumber: number) {
+    let lsWorkoutRoutine: WorkoutRoutine = this.getLsWorkoutRoutine();
+    let lsAllSessions: WorkoutSession[] = lsWorkoutRoutine.workoutSessions;
+
+    return lsAllSessions.find(
+      (lsSession: WorkoutSession) => lsSession.session === sessionNumber
     );
-    return workoutRoutine;
+  }
+
+  getLsSessionExercise(exercise: ExerciseWithSets, session: WorkoutSession) {
+    let lsSessionAllExercises: ExerciseWithSets[] = session.exercises;
+    return lsSessionAllExercises.find(
+      (matchingExercise: ExerciseWithSets) => matchingExercise === exercise
+    );
+  }
+
+  getLsSessionExerciseIndex(
+    exercise: ExerciseWithSets,
+    session: WorkoutSession
+  ): number {
+    let lsSessionAllExercises: ExerciseWithSets[] = session.exercises;
+    return lsSessionAllExercises.indexOf(exercise);
   }
 
   initLsWorkoutRoutine() {
-    let workoutRoutine = this.getLsWorkoutRoutine();
+    let workoutRoutine: WorkoutRoutine = this.getLsWorkoutRoutine();
     if (!workoutRoutine) {
       workoutRoutine = {
         workoutRoutineName: '',
@@ -49,23 +81,36 @@ export class LsWorkoutRoutineService {
     this.initLsWorkoutRoutine();
   }
 
-  deleteLsExercise(exercise: LsExercise, session: number) {
-    let workoutRoutine = this.getLsWorkoutRoutine();
-    let workoutSessions = workoutRoutine.workoutSessions;
-
-    let workoutSession = workoutSessions.find(
-      (matchingSession: any) => matchingSession.session === session
-    );
-
-    let workoutSessionExercises = workoutSession.exercises;
-
-    let workoutSessionExercise = workoutSessionExercises.find(
-      (matchingExercise: any) => matchingExercise === exercise
-    );
-
-    workoutSessionExercises.splice(workoutSessionExercise, 1);
-
+  updateLsWorkoutRoutine(workoutRoutine: WorkoutRoutine) {
     localStorage.setItem('workoutRoutine', JSON.stringify(workoutRoutine));
+  }
+
+  deleteLsExercise(exercise: ExerciseWithSets, sessionNumber: number) {
+    let lsSession: WorkoutSession | undefined =
+      this.getLsSession(sessionNumber);
+
+    if (lsSession === undefined) {
+      throw new Error('lsWorkoutSession is undefined');
+    }
+
+    let lsSessionExercise = this.getLsSessionExercise(exercise, lsSession);
+
+    if (lsSessionExercise === undefined) {
+      throw new Error('lsSessionExercise is undefined');
+    }
+
+    let lsSessionExerciseIndex = this.getLsSessionExerciseIndex(
+      lsSessionExercise,
+      lsSession
+    );
+
+    if (lsSessionExerciseIndex === -1) {
+      throw new Error('lsSessionExercise not found in array');
+    }
+
+    lsSession.exercises.splice(lsSessionExerciseIndex, 1);
+
+    this.updateLsWorkoutRoutine(this.getLsWorkoutRoutine());
   }
 
   constructor() {}

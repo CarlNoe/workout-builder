@@ -1,4 +1,4 @@
-export interface LsExercise {
+export interface ExerciseWithSets {
   id: string;
   name: string;
   bodyPart?: string;
