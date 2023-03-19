@@ -31,7 +31,7 @@
 </details>
 
 <!-- GETTING STARTED -->
-
+<span style="color:red!important"> 🔴🔴 /!\ *The Firestore and the API no longer available* 🔴🔴 </span>
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
